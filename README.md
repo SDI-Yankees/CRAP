@@ -1,6 +1,16 @@
 # CRAP
 Consolidated Reporting of Airman and Personnel
 
+
+### Table of Contents
+
+[Overview](https://github.com/SDI-Yankees/CRAP#overview)
+[Problem Statement](https://github.com/SDI-Yankees/CRAP#problem-statement)
+[How app address the problem](https://github.com/SDI-Yankees/CRAP#how-app-address-the-problem)
+[User CRUD](https://github.com/SDI-Yankees/CRAP#user-crud)
+[MVP](https://github.com/SDI-Yankees/CRAP#mvp)
+[Target Persona](https://github.com/SDI-Yankees/CRAP#target-persona)
+
 ## Overview
 Team Members - Roles:
 
@@ -15,7 +25,9 @@ As an airmen/service member, I don't have a central place to track and view trai
 
 ### How app addresses the problem: 
 
-### User CRUD: Login, view training, add training, update status, and delete
+### User CRUD: 
+
+Login, view training, add training, update status, and delete
 
 ## MVP
 
