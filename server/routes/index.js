@@ -6,8 +6,8 @@ router.get('/', function(req, res, next) {
   res.send('Hi world');
 });
 
-router.get('/:userid', (req, res)=>{
-  const userId = req.params.id;
+router.get('/:userId', (req, res)=>{
+  const userId = req.params.userId;
   knex.select('*')
   .from('training_completions')
   .where({user_id: userId})
