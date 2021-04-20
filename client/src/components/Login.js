@@ -2,14 +2,13 @@ import { TextField, Button, Grid } from '@material-ui/core';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import LockIcon from '@material-ui/icons/Lock';
+import CRAPLogo from '../CRAPLogo.svg';
 
 function Login() {
   return (
     <div>
       <header>
-        <h1>
-          CRAP
-        </h1>
+        <img src={CRAPLogo} alt="logo" style={{'width': 300, 'height': 300, 'display': 'inline'}}/>
       </header>
       <main>
         <Grid 
