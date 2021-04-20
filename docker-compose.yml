@@ -6,6 +6,8 @@ services:
       - database.env
     volumes:
       - $HOME/docker/crap/database/:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
   express:
     build: ./server
     depends_on: 
@@ -16,6 +18,5 @@ services:
     environment:
       PORT: 3000
       NODE_ENV: development
-      DATABASE_URL: 'postgres://POSTGRES_USER:POSTGRES_PASSWORD@postgres:5432/POSTGRES_DB'
     volumes: 
       - $HOME/docker/crap/express:/app/data
