@@ -33,6 +33,7 @@ router.post('/training', (req, res) => {
     .then(data => res.status(201).json(newTraining))
 })
 
+
 //updates a training record for an individual
 router.put('/training', (req, res) => {
   const updatedTraining = req.body;
@@ -42,6 +43,7 @@ router.put('/training', (req, res) => {
       completion_date: updatedTraining.completion_date})
     .then(data => res.status(200).send('Training Updated'))
 })
+
 
 
 
