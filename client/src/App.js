@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import MyTraining from './components/MyTraining';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import Overdue from './components/Overdue';
+import Admin from './components/Admin';
 
 function App() {
   return (
@@ -18,6 +19,11 @@ function App() {
           <Header />
           <Overdue />
           <MyTraining />
+          <Footer />
+        </Route>
+        <Route exact path='/admin'>
+          <Header />
+          <Admin />
           <Footer />
         </Route>
       </div>
