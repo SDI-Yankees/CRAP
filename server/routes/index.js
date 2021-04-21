@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
   };
   res.status(200).json(data);
 });
+
 router.get('/:userId', (req, res)=>{
   const userId = req.params.userId;
   knex.select('*')
@@ -21,15 +22,28 @@ router.get('/:userId', (req, res)=>{
   .where({user_id: userId})
   .then(data => res.status(200).json(data))
 })
+
+//posts a new training record for an individual
 router.post('/training', (req, res) => {
   const newTraining = req.body;
-  // if(knex('training_completions').)
   knex('training_completions')
     .insert({training_id: newTraining.training_id, 
              user_id: newTraining.user_id, 
              completion_date: newTraining.completion_date})
     .then(data => res.status(201).json(newTraining))
 })
+
+
+//updates a training record for an individual
+router.put('/training', (req, res) => {
+  const updatedTraining = req.body;
+  knex('training_completions')
+    .where({training_id: updatedTraining.training_id, user_id: updatedTraining.user_id})
+    .update({
+      completion_date: updatedTraining.completion_date})
+    .then(data => res.status(200).send('Training Updated'))
+})
+
 
 
 

@@ -4,7 +4,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
 var indexRouter = require('./routes/index');
-// var userRouter = require('./routes/user.js')
+var trainingRouter = require('./routes/training.js')
 
 
 var app = express();
@@ -17,6 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use('/index', indexRouter);
+app.use('/trainings', trainingRouter)
 // app.use('/:userid', userRouter)
 
 
