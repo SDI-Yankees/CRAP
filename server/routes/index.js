@@ -16,6 +16,8 @@ router.get('/:userId', (req, res)=>{
   const userId = req.params.userId;
   knex.select('*')
   .from('training_completions')
+  .join('trainings', {'training_completions.training_id': 'trainings.id'})
+  .join('users', {'training_completions.user_id': 'users.id'})
   .where({user_id: userId})
   .then(data => res.status(200).json(data))
 })
@@ -28,5 +30,7 @@ router.post('/training', (req, res) => {
              completion_date: newTraining.completion_date})
     .then(data => res.status(201).json(newTraining))
 })
+
+
 
 module.exports = router;
