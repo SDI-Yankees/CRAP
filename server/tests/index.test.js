@@ -15,7 +15,7 @@ test('GET /userid', done => {
         .get('/index/1')
         .expect(200)
         .end(function(err, res) {
-            expect(res.body.length).toEqual(3);
+            expect(res.body.length).toEqual(4);
             done();
         });
 });

@@ -6,9 +6,13 @@ exports.up = function(knex) {
       table.integer ('user_id')
       table.foreign ('user_id').references('users.id').onDelete('CASCADE')
       table.date ('completion_date')
+      table.primary(['training_id', 'user_id'])
   })
 };
 
 exports.down = function(knex) {
   return knex.schema.dropTableIfExists ('training_completions')
 };
+
+
+// table.primary(['training_id', 'user_id]);

@@ -21,24 +21,12 @@ router.get('/:userId', (req, res)=>{
 })
 router.post('/training', (req, res) => {
   const newTraining = req.body;
-  if(knex('training_completions').)
+  // if(knex('training_completions').)
   knex('training_completions')
     .insert({training_id: newTraining.training_id, 
              user_id: newTraining.user_id, 
              completion_date: newTraining.completion_date})
     .then(data => res.status(201).json(newTraining))
 })
-
-// router.post('/', async (req, res) => {
-//   const postData = req.body;
-
-//   try {
-//     const ids = await db('posts').insert(postData);
-//     res.status(201).json(ids);
-//   } catch (err) {
-//     res.status(500).json({message: "Error creating new post", error: err})
-//   }
-
-// });
 
 module.exports = router;
