@@ -21,11 +21,11 @@ module.exports = {
   },
 
   staging: {
-    client: 'postgresql',
+    client: 'pg',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      database: 'crap',
+      user:     'postgres',
+      password: 'docker'
     },
     pool: {
       min: 2,
@@ -37,11 +37,26 @@ module.exports = {
   },
 
   production: {
-    client: 'postgresql',
+    client: 'pg',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      database: 'crap',
+      user:     'postgres',
+      password: 'docker'
+    },
+    pool: {
+      min: 2,
+      max: 10
+    },
+    migrations: {
+      tableName: 'knex_migrations'
+    }
+  },
+  test: {
+    client: 'pg',
+    connection: {
+      database: 'crap',
+      user:     'postgres',
+      password: 'docker'
     },
     pool: {
       min: 2,
