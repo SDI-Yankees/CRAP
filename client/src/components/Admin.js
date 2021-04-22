@@ -1,34 +1,79 @@
-import {Button} from '@material-ui/core';
+import {Button, Input} from '@material-ui/core';
+import React, {useState} from 'react';
+
+
+
+// function Admin_old (){
+//     return (
+//     <div className = "admin">
+//         <nav className="adminButtons"> 
+//             <Button variant="contained" color="primary">Modify Training</Button>
+//             <Button variant="contained" color="primary">Add Training</Button>
+//         </nav>
+//         <form className = "newTrainingForm"  action = "http://localhost:3000/trainings" method="post" >
+//             <label htmlFor="name">Training Name: &nbsp; 
+//                 <input type="text" id="name" name="name"></input>
+//             </label>
+//             <label htmlFor="category">Training Category: &nbsp; 
+//                 <input type="text" id="category" name="category"></input> {/*Make this a drop down menu where options are pulled from server*/}
+//             </label>
+//             <label htmlFor="days_valid">Days Valid: &nbsp; 
+//                 <input type="text" id="days_valid" name="days_valid"></input>
+//             </label>
+//             <input type="submit"/>
+//         </form>
+//     </div>
+//     )
+
+// }
 
 //const trainingURL = "http://localhost:3000/trainings";
-function Admin (){
-    return (
-    <div className = "admin">
-        <nav className="adminButtons"> 
-            <Button variant="contained" color="primary">Modify Training</Button>
-            <Button variant="contained" color="primary">Add Training</Button>
-        </nav>
-        <form className = "newTrainingForm"  action = "http://localhost:3000/trainings" method="post" >
-            <label htmlFor="name">Training Name: &nbsp; 
-                <input type="text" id="name" name="name"></input>
-            </label>
-            <label htmlFor="category">Training Category: &nbsp; 
-                <input type="text" id="category" name="category"></input> {/*Make this a drop down menu where options are pulled from server*/}
-            </label>
-            <label htmlFor="days_valid">Days Valid: &nbsp; 
-                <input type="text" id="days_valid" name="days_valid"></input>
-            </label>
-            <input type="submit"/>
-        </form>
-    </div>
-    )
+function Admin(){
 
+    const [adminInputs, setAdminInputs] = useState({name: '', category: '', days_valid: null});
+
+    const createTraining = (e) => {
+        e.preventDefault();
+        console.log("Data passed: ", adminInputs)
+    };
+
+    const toChange = (name, value) => {
+        setAdminInputs({...adminInputs, [name]: value})
+    }
+
+    const onChange = (e) => {
+       toChange(e.target.name, e.target.value)
+    }
+
+    console.log(adminInputs)
+    return(
+        <div className="admin">
+            <form onSubmit ={createTraining}>
+                <Input
+                    name="name"
+                    placeholder="training name"
+                    type="text"
+                    value={adminInputs.name}
+                    onChange = {onChange}
+                />
+                <Input
+                    name="category"
+                    placeholder="category"
+                    type = "text"
+                    value = {adminInputs.category}
+                    onChange = {onChange}
+                />
+                <Input
+                    name="days_valid"
+                    placeholder='0'
+                    value = {adminInputs.days_valid}
+                    onChange = {onChange}
+                />
+                <input type="submit"/>
+            </form>
+        </div>
+    )
 }
-// {/*onSubmit= {() => submitNewTraining*/}
-// function submitNewTraining(e){
-//     e.preventDefault();
-//     fetch(trainingURL, {method: 'POST'})
-// }
 
 export default Admin;
 
