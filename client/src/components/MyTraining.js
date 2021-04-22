@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import '../CSS/MyTraining.css';
 import getUserFromCookie from '../util/getUserFromCookie.js';
+import TrainingEntry from './TrainingEntry.js'
 
-function MyTraining() {
+function MyTraining({setTraining}) {
   let [ trainingState, setTrainingState ] = useState([]);
 
 
@@ -19,11 +20,7 @@ function MyTraining() {
         <h2 className="Training-Header">My Training</h2>
         {trainingState === undefined ? 'Loading...' : 
         trainingState.map(training => {
-          return <li className="training-item">
-                   <span><strong>Training Name: </strong> {`${training.name}`}   </span>
-                   <span><strong>Category: </strong> {`${training.category}`}   </span>
-                   <span><strong>Completion Date: </strong> {`${training.completion_date.slice(0,10)}`}   </span>
-                 </li>
+          return <TrainingEntry training={training} updateTraining={setTraining}/>
         })}
       </ul>
     </div>

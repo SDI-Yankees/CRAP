@@ -4,20 +4,22 @@
     align-items: center;
     flex-direction: row;
     justify-content: space-around;
-    
+    border-bottom: 2px solid whitesmoke;
+    background-color: rgba(160, 160, 160, 0.496);
 }
 
 .header-left {
     height: 100%;
     width: 300px;
     float: left;
-    background-color: slateblue;
+    padding-bottom: 30px;
+    /*background-color: slateblue;*/
 }
 
 .header-right {
     float: right;
     height: 100%;
-    background-color: blue;
+    /*background-color: blue;*/
     width: 300px;
     display: flex;
     align-items: center;
@@ -26,11 +28,15 @@
 }
 
 .header-logo {
-    width: 250px;
+    width: 300px;
 }
+
 .header-middle {
-    background-color: green;
+    /*background-color: green;*/
     width: 50%;
     height: 100%;
     align-items: center;
+    display: flex;
+    justify-content: center;
+    text-shadow: 5px 5px 10px white
 }

@@ -24,7 +24,7 @@ function Header (){
         <h1>{`Welcome ${user.rank} ${user.first_name} ${user.last_name}`}</h1>
       </div>
       <div className="header-right">
-        <Button className="signout-button" variant="contained" color="primary" endIcon={<ExitToAppIcon />} onClick={()=> signOut()}>
+        <Button className="signout-button" style={{ fontWeight: 'bold' }} variant="contained" color="primary" size="large" endIcon={<ExitToAppIcon />} onClick={()=> signOut()}>
           Sign Out
         </Button>
       </div>
