@@ -32,7 +32,7 @@ useEffect(() => {
     loaded.current = true; 
   } else {
     console.log('gonna fetch')
-    fetch('http://localhost:3000/login', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(state)})
+    fetch('http://localhost:3000/login', {method: 'POST', credentials: 'include', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(state)})
     .then(response => response.json())
     .then(results => console.log(results))
     .catch(err => console.log(err));
