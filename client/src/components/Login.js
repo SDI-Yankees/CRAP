@@ -3,7 +3,9 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import LockIcon from '@material-ui/icons/Lock';
 import CRAPLogo from '../CRAPLogo.svg';
-import { useReducer, useEffect, useRef } from 'react';
+import { useReducer, useEffect, useRef} from 'react';
+import { useHistory } from "react-router-dom";
+import Cookies from 'js-cookie';
 
 
 
@@ -16,7 +18,8 @@ function reducer(state, action){
     case 'submit':
       console.log(state);
       return {...state, attempt: !state.attempt}
-      
+    case 'successfulLogin':
+      return {...state, loginSuccess: true};
     default :
       return state;
   }
@@ -25,6 +28,7 @@ function reducer(state, action){
 function Login() {
 const [ state, dispatch ] = useReducer(reducer, {username: "", password: "", loginSuccess: false, attempt: false});
 const loaded = useRef(false);
+let history = useHistory();
 
 
 useEffect(() => {
@@ -33,13 +37,23 @@ useEffect(() => {
   } else {
     console.log('gonna fetch')
     fetch('http://localhost:3000/login', {method: 'POST', credentials: 'include', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(state)})
-    .then(response => response.json())
-    .then(results => console.log(results))
+    .then(response => {
+      const userCookie = Cookies.get('loggedIn');
+      if (userCookie){
+        dispatch({type: 'successfulLogin'})
+      }
+    })
     .catch(err => console.log(err));
     }
   },
   [state.attempt]
 )
+
+useEffect(() => {
+  if(state.loginSuccess){
+    history.push('/MyTraining');
+  }
+}, [state.loginSuccess])
 
   return (
     <div>
