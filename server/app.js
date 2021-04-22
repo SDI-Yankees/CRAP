@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cors = require('cors');
 var indexRouter = require('./routes/index');
 var trainingRouter = require('./routes/training.js')
+var loginRouter = require('./routes/login.js')
 
 
 var app = express();
@@ -14,10 +15,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors());
+app.use(cors({origin: true, credentials: true}));
 
 app.use('/index', indexRouter);
 app.use('/trainings', trainingRouter)
+app.use('/login', loginRouter)
 // app.use('/:userid', userRouter)
 
 

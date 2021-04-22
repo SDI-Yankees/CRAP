@@ -3,8 +3,44 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import LockIcon from '@material-ui/icons/Lock';
 import CRAPLogo from '../CRAPLogo.svg';
+import { useReducer, useEffect, useRef } from 'react';
+
+
+
+function reducer(state, action){
+  switch(action.type){
+    case 'updateUserName':
+      return {...state, username: action.username};
+    case 'updatePassword' :
+      return {...state, password: action.password};
+    case 'submit':
+      console.log(state);
+      return {...state, attempt: !state.attempt}
+      
+    default :
+      return state;
+  }
+}
 
 function Login() {
+const [ state, dispatch ] = useReducer(reducer, {username: "", password: "", loginSuccess: false, attempt: false});
+const loaded = useRef(false);
+
+
+useEffect(() => {
+  if (!loaded.current){
+    loaded.current = true; 
+  } else {
+    console.log('gonna fetch')
+    fetch('http://localhost:3000/login', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(state)})
+    .then(response => response.json())
+    .then(results => console.log(results))
+    .catch(err => console.log(err));
+    }
+  },
+  [state.attempt]
+)
+
   return (
     <div>
       <header>
@@ -25,7 +61,9 @@ function Login() {
                   <AccountCircle />
                 </InputAdornment>
               ),
-            }}/>
+              }}
+              onChange={e => dispatch({type: 'updateUserName', username: e.target.value})}
+            />
           </Grid>
           <Grid item xs={12}>
             <TextField id="password" type="password" label="Password" variant="outlined" InputProps={{
@@ -34,10 +72,12 @@ function Login() {
                   <LockIcon/>
                 </InputAdornment>
               ),
-            }}/>
+              }}
+              onChange={e => dispatch({type: 'updatePassword', password: e.target.value})}
+            />
           </Grid>
           <Grid item xs={12}>
-            <Button variant="contained" color="primary">
+            <Button variant="contained" color="primary" onClick={() => dispatch({type: 'submit'})}>
               Login
             </Button>
           </Grid>
