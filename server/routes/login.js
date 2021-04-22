@@ -4,20 +4,20 @@ var environment = process.env.NODE_ENV || 'development';
 const knex = require('knex')(require('../knexfile.js')[environment]);
 const bcrypt = require('bcrypt');
 
-
-
 router.post('/', async (req, res) => {
-  const passwordHash = await knex('credentials')
-  .select('password')
+  const user = await knex('credentials')
+  .select('password', 'user_id')
   .where({username: req.body.username})
   // console.log(JSON.stringify(req.body))
-  await bcrypt.compare(req.body.password, passwordHash[0].password, async (err, result) => {
+  await bcrypt.compare(req.body.password, user[0].password, async (err, result) => {
     if (err){
       res.status(404).json('Something went wrong')
     } else {
         if (result) {
-          res.cookie('loggedIn', req.body.username, {httpOnly: true})
-          res.status(200).json('Successful login')
+          const loggedInUser = await knex.from('users')
+          .select('*')
+          .where({id:user[0].user_id})
+          res.status(200).json(loggedInUser)
         } else {
           res.status(404).json('Invalid credentials')
         }
