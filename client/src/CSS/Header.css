@@ -1,3 +1,42 @@
-.header {
-    height: 300px;
+.header-container {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    border-bottom: 2px solid whitesmoke;
+    background-color: rgba(160, 160, 160, 0.496);
+}
+
+.header-left {
+    height: 100%;
+    width: 300px;
+    float: left;
+    padding-bottom: 30px;
+    /*background-color: slateblue;*/
+}
+
+.header-right {
+    float: right;
+    height: 100%;
+    /*background-color: blue;*/
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.header-logo {
+    width: 300px;
+}
+
+.header-middle {
+    /*background-color: green;*/
+    width: 50%;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-shadow: 5px 5px 10px white
 }

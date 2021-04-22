@@ -40,7 +40,7 @@ router.post('/register', async (req, res) => {
       res.status(404).json('User already exists');
     } else {
       const userAdded = await knex('users')
-      .insert({first_name: user.first_name, last_name: user.last_name, rank: user.rank, is_supervisor: user.is_supervisor, supervisor_id: user.supervisor_id});
+      .insert({first_name: user.first_name, last_name: user.last_name, rank: user.rank, is_supervisor: user.is_supervisor, supervisor_id: user.supervisor_id, is_admin: user.is_admin});
       if (userAdded){
         // console.log('looking up ID')
         const userId = await knex('users')
