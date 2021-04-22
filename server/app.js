@@ -6,6 +6,7 @@ var cors = require('cors');
 var indexRouter = require('./routes/index');
 var trainingRouter = require('./routes/training.js')
 var loginRouter = require('./routes/login.js')
+var userRouter = require('./routes/user.js')
 
 
 var app = express();
@@ -20,7 +21,7 @@ app.use(cors({origin: true, credentials: true}));
 app.use('/index', indexRouter);
 app.use('/trainings', trainingRouter)
 app.use('/login', loginRouter)
-// app.use('/:userid', userRouter)
+app.use('/user', userRouter)
 
 
 

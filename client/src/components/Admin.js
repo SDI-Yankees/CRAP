@@ -1,10 +1,12 @@
 import {Button, Input, Checkbox} from '@material-ui/core';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import '../CSS/Admin.css';
 
 
 function Admin(){
-
+    const trainingURL = "http://localhost:3000/trainings";
+    const userURL = "http://localhost:3000/login/register"
+    const allUsersURL="http://localhost:3000/user"
     const [adminInputs, setAdminInputs] = useState({name: '', category: '', days_valid: null});
     const [newUserInputs, setNewUserInputs] = useState({
         first_name: '', 
@@ -17,8 +19,14 @@ function Admin(){
         email: '',
         password: ''});
 
-    const trainingURL = "http://localhost:3000/trainings";
-    const userURL = "http://localhost:3000/login/register"
+    const [allUsers, setAllUsers] = useState([]);
+    useEffect(()=>{
+        fetch(allUsersURL)
+        .then(response=>response.json())
+        .then(users => setAllUsers(users) )
+    }, [])
+
+    const [userSelected, selectUser] = useState({});
 
     const createTraining = (e) => {
         e.preventDefault();
@@ -41,6 +49,14 @@ function Admin(){
             }
         )
     };
+
+    const deleteUser = (e) => {
+        fetch(`${allUsersURL}/${userSelected.id}`,
+            {
+                method: 'DELETE'
+            }
+        )
+    }
 
     //event listeners/handlers for users
     const userToChange = (name, value) => {
@@ -159,6 +175,18 @@ function Admin(){
                     Create User
                 </Button>   
             </form>
+
+            <section className="userRemoval">
+                <select name="users" onChange={(e) => selectUser(e.target.value)}>
+                    {allUsers.map(user => {
+                    console.log(user.id)
+                    return(<option value={user.id}>{`${user.rank} ${user.first_name} ${user.last_name}`}</option>)
+                    })}
+                </select>
+                <Button className="input" variant="contained" color="primary" onClick={(e) => deleteUser(e)}>
+                    Delete User
+                </Button>   
+            </section>
         </div>
     )
 }

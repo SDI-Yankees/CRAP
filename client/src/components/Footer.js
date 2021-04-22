@@ -5,9 +5,8 @@ function Footer() {
   return (
     <div className="footer-container">
       <div className="left-footer">
-        <div>Training Manager Contact Info</div>
-        <div>Help</div>
-        <div className="card-container">
+        <div style={{fontWeight:'bold'}}>Training Manager Contact Info <br/><br/>Help </div>
+        
           <div className="card">
             <div className="content">
               <div className="front">
@@ -24,7 +23,7 @@ function Footer() {
               </div>
             </div>
           </div>
-        </div>
+        
       </div>
       <div className="right-footer">
         <div className="logo-container">
