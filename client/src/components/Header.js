@@ -4,6 +4,7 @@ import '../CSS/Header.css';
 import getUserFromCookie from '../util/getUserFromCookie.js';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import CRAPLogo from '../CRAPLogo.svg';
 
 function Header (){
   const user = getUserFromCookie();
@@ -15,11 +16,18 @@ function Header (){
   };
 
   return (
-    <div className="header">
-      <h1>{`Welcome ${user.rank} ${user.first_name} ${user.last_name}`}</h1>
-      <Button variant="contained" color="primary" endIcon={<ExitToAppIcon />} onClick={()=> signOut()}>
-        Sign Out
-      </Button>
+    <div className="header-container">
+      <div className="header-left">
+        <img className="header-logo" src={CRAPLogo}/>
+      </div>
+      <div className="header-middle">
+        <h1>{`Welcome ${user.rank} ${user.first_name} ${user.last_name}`}</h1>
+      </div>
+      <div className="header-right">
+        <Button className="signout-button" variant="contained" color="primary" endIcon={<ExitToAppIcon />} onClick={()=> signOut()}>
+          Sign Out
+        </Button>
+      </div>
     </div>
   )
 

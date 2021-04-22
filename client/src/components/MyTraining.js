@@ -16,7 +16,7 @@ function MyTraining() {
   return (
     <div className="training-container">
       <ul className="list">
-        <h2>My Training</h2>
+        <h2 className="Training-Header">My Training</h2>
         {trainingState === undefined ? 'Loading...' : 
         trainingState.map(training => {
           return <li className="training-item">
