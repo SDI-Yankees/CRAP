@@ -17,7 +17,8 @@ router.post('/', async (req, res) => {
           const loggedInUser = await knex.from('users')
           .select('*')
           .where({id:user[0].user_id})
-          res.status(200).json(loggedInUser)
+          res.status(200).cookie('loggedIn', loggedInUser[0]).send('Cookie set')
+
         } else {
           res.status(404).json('Invalid credentials')
         }
@@ -25,7 +26,6 @@ router.post('/', async (req, res) => {
   })
   ;
 })
-
 
 router.post('/register', async (req, res) => {
   const user = req.body;

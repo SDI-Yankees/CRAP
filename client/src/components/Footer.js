@@ -1,4 +1,5 @@
 import CRAPLogo from '../CRAPLogo.svg';
+import '../CSS/Footer.css';
 
 function Footer() {
   return (

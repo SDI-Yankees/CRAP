@@ -1,5 +1,6 @@
 import {Button, Input} from '@material-ui/core';
 import React, {useState} from 'react';
+import '../CSS/Admin.css';
 
 
 
@@ -47,8 +48,8 @@ function Admin(){
 
     console.log(adminInputs)
     return(
-        <div className="admin">
-            <form onSubmit ={createTraining}>
+        <div className="admin-container">
+            <form onSubmit ={createTraining} className="admin-form">
                 <Input
                     name="name"
                     placeholder="training name"
@@ -69,7 +70,9 @@ function Admin(){
                     value = {adminInputs.days_valid}
                     onChange = {onChange}
                 />
-                <input type="submit"/>
+                <Button variant="contained" color="primary" /*onClick={() => dispatch({type: 'submit'})}*/>
+                    Submit
+                </Button>
             </form>
         </div>
     )

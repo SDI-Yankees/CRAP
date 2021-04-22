@@ -4,6 +4,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import LockIcon from '@material-ui/icons/Lock';
 import CRAPLogo from '../CRAPLogo.svg';
 import { useReducer, useEffect, useRef } from 'react';
+import Cookies from 'js-cookie';
 
 
 
@@ -33,8 +34,7 @@ useEffect(() => {
   } else {
     console.log('gonna fetch')
     fetch('http://localhost:3000/login', {method: 'POST', credentials: 'include', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(state)})
-    .then(response => response.json())
-    .then(results => console.log(results))
+    .then(response => console.log(Cookies.get('loggedIn')))
     .catch(err => console.log(err));
     }
   },
