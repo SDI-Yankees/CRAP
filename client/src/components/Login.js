@@ -60,7 +60,7 @@ useEffect(() => {
       <header>
         <img src={CRAPLogo} alt="logo" style={{'width': 300, 'height': 300, 'display': 'inline'}}/>
       </header>
-      <main>
+      <main className="login">
         <Grid 
         container 
         direction="row"
@@ -91,7 +91,7 @@ useEffect(() => {
             />
           </Grid>
           <Grid item xs={12}>
-            <Button variant="contained" color="primary" onClick={() => dispatch({type: 'submit'})}>
+            <Button variant="contained" size="large" style={{ fontWeight: 'bold' }} color="primary" onClick={() => dispatch({type: 'submit'})}>
               Login
             </Button>
           </Grid>
