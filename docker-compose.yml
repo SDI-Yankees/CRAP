@@ -8,15 +8,15 @@ services:
       - $HOME/docker/crap/database/:/var/lib/postgresql/data/
     ports:
       - 5432:5432
-  express:
-    build: ./server
-    depends_on: 
-      - database
-    ports:
-      - 3000:3000
-    # command: npm start
-    environment:
-      PORT: 3000
-      NODE_ENV: development
-    volumes: 
-      - $HOME/docker/crap/express:/app/data
+  # express:
+  #   build: ./server
+  #   depends_on: 
+  #     - database
+  #   ports:
+  #     - 3000:3000
+  #   command: npm start && npx knex migrate:latest && npx knex seed:run
+  #   environment:
+  #     PORT: 3000
+  #     NODE_ENV: development
+  #   volumes: 
+  #     - $HOME/docker/crap/express:/app/data
