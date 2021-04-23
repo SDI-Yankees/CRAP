@@ -51,6 +51,7 @@ function Admin(){
     };
 
     const deleteUser = (e) => {
+        console.log(userSelected)
         fetch(`${allUsersURL}/${userSelected.id}`,
             {
                 method: 'DELETE'
@@ -177,9 +178,12 @@ function Admin(){
             </form>
 
             <section className="userRemoval">
-                <select name="users" onChange={(e) => selectUser(e.target.value)}>
+                <select name="users" onChange={(e) => {
+                    console.log(e.target.selectedIndex)
+                    console.log(allUsers)
+                    selectUser(allUsers[e.target.selectedIndex])}}>
                     {allUsers.map(user => {
-                    console.log(user.id)
+                    // console.log(user.id)
                     return(<option value={user.id}>{`${user.rank} ${user.first_name} ${user.last_name}`}</option>)
                     })}
                 </select>
