@@ -1,4 +1,5 @@
 import {useHistory} from 'react-router-dom';
+import '../CSS/TrainingEntry.css';
 
 function TrainingEntry ({training, updateTraining}){
     let history = useHistory();

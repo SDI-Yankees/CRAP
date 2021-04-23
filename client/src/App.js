@@ -17,7 +17,7 @@ function App() {
       <div className="App">
         <Route exact path='/'>
           <Login />
-          <Footer />
+          <Footer className="login-footer"/>
         </Route>
         <Route exact path='/MyTraining'>
           <Header />

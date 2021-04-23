@@ -1,9 +1,14 @@
 .list {
     list-style-type: none;
-    margin: 0;
+    margin: auto;
     padding: 0;
 }
 
 .Training-Header {
     text-shadow: 1 1 5px black;
+    text-decoration: underline;
+}
+
+.training-container {
+    min-height: 500px;
 }

@@ -6,6 +6,7 @@ import CRAPLogo from '../CRAPLogo.svg';
 import { useReducer, useEffect, useRef} from 'react';
 import { useHistory } from "react-router-dom";
 import Cookies from 'js-cookie';
+import '../CSS/Login.css';
 
 
 
