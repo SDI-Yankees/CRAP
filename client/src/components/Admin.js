@@ -99,16 +99,17 @@ function Admin(){
                     </div>
                     <div className="input-button">
                         <Button className="input" variant="contained" color="primary" onClick={(e) => {
-                    deleteUser(e);
-                    refreshPage();
-                    }}>
-                    Delete User
-                </Button>
+                            deleteUser(e);
+                            refreshPage();
+                            }}>
+                            Delete User
+                        </Button>
                     </div>
                 </div>  
             </section>
             <br/>
             <div className="training-inputs left">
+            <div className="training-form-container">
             <form onSubmit ={createTraining} className="training-form">
                 <h1>Create Training</h1>
                 <Input
@@ -139,9 +140,10 @@ function Admin(){
                     Create Training
                 </Button>   
             </form>
-
+            </div>
             </div>
             <div className="right">
+                <div className="user-form-container">
                 <form onSubmit ={createUser} className="user-form">
                     <h1>Create User</h1>
                     <Input
@@ -210,6 +212,7 @@ function Admin(){
                     Create User
                 </Button>  
                 </form>
+                </div>
             </div>
             
 

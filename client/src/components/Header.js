@@ -24,11 +24,12 @@ function Header (){
         <h1>{`Welcome ${user.rank} ${user.first_name} ${user.last_name}`}</h1>
       </div>
       <div className="header-right">
-        <Link to='/MyTraining'>My Training</Link>
-        <Link to='/admin'>Admin</Link>
-        <Button className="signout-button" style={{ fontWeight: 'bold' }} variant="contained" color="primary" size="large" endIcon={<ExitToAppIcon />} onClick={()=> signOut()}>
+        <div><Link style={{ textDecoration: 'none' }} to='/MyTraining'><Button variant="contained" color="primary">My Training</Button></Link></div>
+        <div><Link style={{ textDecoration: 'none' }} to='/admin'><Button variant="contained" color="primary">Admin</Button></Link></div>
+        <div><Button className="signout-button" style={{ fontWeight: 'bold' }} variant="contained" color="primary" size="large" endIcon={<ExitToAppIcon />} onClick={()=> signOut()}>
           Sign Out
         </Button>
+        </div>
       </div>
     </div>
   )
