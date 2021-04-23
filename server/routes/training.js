@@ -21,4 +21,15 @@ router.post('/', (req, res) => {
   .then(data => res.status(201).json(newTraining))
 })
 
+router.post('/complete', (req, res) => {
+  const completedTraining = req.body;
+  knex('training_completions')
+  .insert({
+    training_id: completedTraining.training_id,
+    user_id: completedTraining.user_id,
+    completion_date: completedTraining.completion_date
+  })
+  .then(data => res.status(201).json(completedTraining))
+})
+
 module.exports = router;

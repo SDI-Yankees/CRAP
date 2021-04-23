@@ -105,7 +105,7 @@ function Admin(){
                 <Input
                     className="input"
                     name="days_valid"
-                    placeholder='0'
+                    placeholder='days valid'
                     value = {adminInputs.days_valid}
                     onChange = {onChange}
                 /><br/>
