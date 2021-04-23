@@ -2,7 +2,7 @@ import { Button } from '@material-ui/core';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import '../CSS/Header.css';
 import getUserFromCookie from '../util/getUserFromCookie.js';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import CRAPLogo from '../CRAPLogo.svg';
 
@@ -24,6 +24,8 @@ function Header (){
         <h1>{`Welcome ${user.rank} ${user.first_name} ${user.last_name}`}</h1>
       </div>
       <div className="header-right">
+        <Link to='/MyTraining'>My Training</Link>
+        <Link to='/admin'>Admin</Link>
         <Button className="signout-button" style={{ fontWeight: 'bold' }} variant="contained" color="primary" size="large" endIcon={<ExitToAppIcon />} onClick={()=> signOut()}>
           Sign Out
         </Button>

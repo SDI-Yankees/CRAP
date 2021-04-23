@@ -28,6 +28,10 @@ function Admin(){
 
     const [userSelected, selectUser] = useState({});
 
+    function refreshPage() {
+        window.location.reload(false);
+      }
+    
     const createTraining = (e) => {
         e.preventDefault();
         fetch(trainingURL, 
@@ -94,9 +98,12 @@ function Admin(){
                         </select>
                     </div>
                     <div className="input-button">
-                        <Button className="input" variant="contained" color="primary" onClick={(e) => deleteUser(e)}>
-                            Delete User
-                        </Button> 
+                        <Button className="input" variant="contained" color="primary" onClick={(e) => {
+                    deleteUser(e);
+                    refreshPage();
+                    }}>
+                    Delete User
+                </Button>
                     </div>
                 </div>  
             </section>
@@ -123,7 +130,7 @@ function Admin(){
                 <Input
                     className="input"
                     name="days_valid"
-                    placeholder='0'
+                    placeholder='days valid'
                     value = {adminInputs.days_valid}
                     onChange = {onChange}
                 /><br/>
@@ -132,6 +139,7 @@ function Admin(){
                     Create Training
                 </Button>   
             </form>
+
             </div>
             <div className="right">
                 <form onSubmit ={createUser} className="user-form">
@@ -195,14 +203,17 @@ function Admin(){
                     <br/>
                     <label>Supervisor<Checkbox value="is_supervisor" onChange={(e) => setNewUserInputs({...newUserInputs, is_supervisor: !newUserInputs.is_supervisor})}/></label><br/>
                     <label>Admin<Checkbox value="is_admin" onChange={(e) => setNewUserInputs({...newUserInputs, is_admin: !newUserInputs.is_admin})}/></label><br/>
-                    <Button className="input" variant="contained" color="primary" onClick={(e) => createUser(e)}>
-                        Create User
-                    </Button>   
+                    <Button className="input" variant="contained" color="primary" onClick={(e) => {
+                    createUser(e);
+                    refreshPage();
+                    }}>
+                    Create User
+                </Button>  
                 </form>
             </div>
             
 
-            
+
         </div>
     )
 }
