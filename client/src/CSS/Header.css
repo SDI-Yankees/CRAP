@@ -10,7 +10,7 @@
 
 .header-left {
     height: 100%;
-    width: 300px;
+    width: 400px;
     float: left;
     padding-bottom: 30px;
     /*background-color: slateblue;*/
@@ -19,12 +19,12 @@
 .header-right {
     float: right;
     height: 100%;
-    /*background-color: blue;*/
-    width: 300px;
+    width: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    display: flex;
+    justify-content: space-around;
 }
 
 .header-logo {
