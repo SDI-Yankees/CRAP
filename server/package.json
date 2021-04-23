@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "nodemon ./bin/www && npx knex migrate:latest && npx knex seed:run",
     "test": "NODE_ENV=test jest --watchAll"
   },
   "dependencies": {
