@@ -28,6 +28,10 @@ function Admin(){
 
     const [userSelected, selectUser] = useState({});
 
+    function refreshPage() {
+        window.location.reload(false);
+      }
+    
     const createTraining = (e) => {
         e.preventDefault();
         fetch(trainingURL, 
@@ -172,7 +176,10 @@ function Admin(){
                 <br/>
                 <label>Supervisor<Checkbox value="is_supervisor" onChange={(e) => setNewUserInputs({...newUserInputs, is_supervisor: !newUserInputs.is_supervisor})}/></label><br/>
                 <label>Admin<Checkbox value="is_admin" onChange={(e) => setNewUserInputs({...newUserInputs, is_admin: !newUserInputs.is_admin})}/></label><br/>
-                <Button className="input" variant="contained" color="primary" onClick={(e) => createUser(e)}>
+                <Button className="input" variant="contained" color="primary" onClick={(e) => {
+                    createUser(e);
+                    refreshPage();
+                    }}>
                     Create User
                 </Button>   
             </form>
@@ -187,7 +194,10 @@ function Admin(){
                     return(<option value={user.id}>{`${user.rank} ${user.first_name} ${user.last_name}`}</option>)
                     })}
                 </select>
-                <Button className="input" variant="contained" color="primary" onClick={(e) => deleteUser(e)}>
+                <Button className="input" variant="contained" color="primary" onClick={(e) => {
+                    deleteUser(e);
+                    refreshPage();
+                    }}>
                     Delete User
                 </Button>   
             </section>
