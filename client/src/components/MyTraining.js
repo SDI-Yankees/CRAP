@@ -44,10 +44,12 @@ function MyTraining({setTraining}) {
     <div className="training-container">
       <ul className="list">
         <h2 className="Training-Header">My Training</h2>
+        <div className="training-item">
         {trainingState === undefined ? 'Loading...' : 
         trainingState.map(training => {
           return <TrainingEntry training={training} updateTraining={setTraining}/>
         })}
+        </div>
       </ul>
       <div className="completeTraining">
         <select onChange={(e) => {
